@@ -1,5 +1,15 @@
-const { defineConfig } = require('@vue/cli-service')
+const {defineConfig} = require('@vue/cli-service');
+
 module.exports = defineConfig({
-  transpileDependencies: true,
-  lintOnSave: false
-})
+    transpileDependencies: true,
+    lintOnSave: false,
+
+    configureWebpack: {
+        resolve: {
+            alias: {
+                "@imgs": '/src/assets/imgs/',
+                "@icons": '/src/assets/icons/',
+            },
+        },
+    },
+});

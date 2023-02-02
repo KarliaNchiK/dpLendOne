@@ -7,7 +7,9 @@
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "@icons/*": ["/src/assets/icons/*"],
+      "@imgs/*": ["/src/assets/imgs/*"]
     },
     "lib": [
       "esnext",
