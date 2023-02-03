@@ -7,9 +7,12 @@
             height="16"
             class="phone-number__icon"
         >
-        <span class="phone-number__text">
+        <a
+            class="phone-number__text"
+            :href="`tel:${ text }`"
+        >
             {{ text }}
-        </span>
+        </a>
     </div>
 </template>
 
@@ -33,8 +36,23 @@ export default {
         padding-bottom: 8px;
     }
 
+    .phone-number__icon {
+        transition: transform 0.25s ease-in-out;
+
+        will-change: transform;
+    }
+
     .phone-number__text {
         margin-left: 8px;
+
+        color: black;
+        text-decoration: none;
+    }
+
+    &:hover {
+        .phone-number__icon {
+            transform: scale(1.3) translateX(-10%);
+        }
     }
 }
 </style>
