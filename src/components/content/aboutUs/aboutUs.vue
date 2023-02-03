@@ -1,21 +1,10 @@
 <template>
     <div class="about-us">
         <div class="about-us__strong-title">
-            <div
-                class="about-us__strong-title-line"
+            <img
+                src="@icons/titleFourBlock.svg"
+                alt="Подумай о нас"
             >
-                ПО-
-            </div>
-            <div
-                class="about-us__strong-title-line"
-            >
-                ДУМАЙ
-            </div>
-            <div
-                class="about-us__strong-title-line"
-            >
-                О НАС
-            </div>
         </div>
         <div class="about-us__info">
             <div>
@@ -45,14 +34,15 @@
     margin-top: 20vh;
     padding-top: 10vh;
     display: flex;
-    align-items: center;
 
     .about-us__strong-title {
-        .about-us__strong-title-line {
-            font-size: calc(86px + 4.2vw);
-            line-height: 1.2em;
-            font-weight: 900;
-        }
+        position: sticky;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        height: 100%;
+        object-fit: contain;
     }
 
     .about-us__info {
@@ -101,6 +91,7 @@
 
         .about-us__info {
             border-top: 1px solid grey;
+            padding-top: 5vh;
         }
     }
 }
