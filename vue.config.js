@@ -1,8 +1,16 @@
 const {defineConfig} = require('@vue/cli-service');
+const nameProject = "youSolutions";
 
 module.exports = defineConfig({
     transpileDependencies: true,
     lintOnSave: false,
+
+
+    publicPath: process.env.NODE_ENV === 'production'
+        ? './'
+        : '/',
+
+    outputDir: nameProject,
 
     configureWebpack: {
         resolve: {

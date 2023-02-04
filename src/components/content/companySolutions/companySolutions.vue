@@ -168,6 +168,10 @@ export default {
     }
 
     @media (min-width: map-get($sizes, 'md')) {
+        & {
+            margin: 10vh -10vw 0;
+        }
+
         .solutions-info {
             width: 60%;
 

@@ -88,7 +88,7 @@ export default {
 
     data: () => ({
         phoneNumbers: ['8 843 245 68 18', '8 904 666 66 46'],
-        contentLinks: ["Решения", "Предложения", "Достижения", "Цены", "Калькулятор", "О нас"],
+        contentLinks: ["Решения", "Персонал", "Достижения", "Цены", "Выгода", "О нас"],
         socialLinks: [
             {
                 title: 'Телеграм',
@@ -125,6 +125,11 @@ export default {
         window.addEventListener('resize', this.onResize);
         this.setActiveHeader();
     },
+    mounted() {
+        if (!this.isMobile) {
+            window.addEventListener('scroll', this.onScroll);
+        }
+    },
     computed: {
         appHeader() {
             const typeHeader = this.activeHeader;
@@ -153,6 +158,9 @@ export default {
         onResize() {
             this.$store.commit("setWindowWidth", window.innerWidth);
         },
+        onScroll() {
+            this.$store.commit("setScrollTop", document.documentElement.scrollTop);
+        },
         goToBlock(index) {
             document.querySelector(`[name='start-block-${ index }']`).scrollIntoView(true);
         },
@@ -171,7 +179,6 @@ export default {
 @use '@/assets/css/sizes.scss' as *;
 
 .app-page {
-    .page-header,
     .page-content,
     .page-footer {
         transition: padding 0.25s;
@@ -252,20 +259,16 @@ export default {
     }
 
     @media (min-width: #{map-get($sizes, 'lg')}) {
-        $paddingPage: 0 15vw;
-
         .page-content,
         .page-footer {
-            padding: $paddingPage;
+            padding: 0 15vw;;
         }
     }
 
     @media (max-width: #{map-get($sizes, 'lg')}) {
-        $paddingPage: 0 2vw;
-
         .page-content,
         .page-footer {
-            padding: $paddingPage;
+            padding: 0 2vw;
         }
     }
 

@@ -1,5 +1,8 @@
 <template>
-    <header class="page-header">
+    <header
+        class="page-header"
+        :class="{'page-header--active': scrollTop !== 0}"
+    >
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
@@ -49,10 +52,15 @@ export default {
             activeLink: 0,
         }
     },
+    computed: {
+        scrollTop() {
+            return this.$store.getters.scrollTop;
+        }
+    },
     methods: {
         onClick(index) {
             this.activeLink = index;
-            // this.goToBlock(index);
+            this.goToBlock(index);
         }
     }
 }
@@ -62,6 +70,10 @@ export default {
 @use "@/assets/css/colors.scss" as *;
 
 .page-header {
+    position: sticky;
+    top: 0;
+    z-index: 1111;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,7 +81,18 @@ export default {
     width: 100%;
     height: 12vh;
     min-height: 80px;
-    padding: 0 4vw;
+    padding: 0 5vw;
+    background: transparent;
+    box-shadow: 0 0 0 transparent;
+    backdrop-filter: blur(0);
+
+    transition: all 0.25s ease-in-out;
+
+    &.page-header--active {
+        box-shadow: 4px 0 8px grey;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(16px);
+    }
 
     .page-header__toolbar {
         position: relative;
