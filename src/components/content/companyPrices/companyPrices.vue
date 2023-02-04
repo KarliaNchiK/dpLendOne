@@ -8,7 +8,7 @@
                 >
             </div>
             <div class="company-prices__title">
-                Оптимпльные ценовые решения, которые позволяют вывести ваше <span><br/> производство на новый уровень </span>
+                Оптимальные ценовые решения, которые позволяют вывести ваш <span><br/> бизнес на новый уровень </span>
             </div>
             <div class="company-prices__quotes company-prices__quotes--down">
                 <img
