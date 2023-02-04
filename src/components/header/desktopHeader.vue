@@ -6,13 +6,18 @@
             width="195"
             height="25"
         >
-        <div class="page-header__toolbar">
+        <div
+            class="page-header__toolbar"
+            :class="`page-header__toolbar--active-${ activeLink }`"
+        >
             <content-link
                 v-for="(contentLink, i) in contentLinks"
                 :key="contentLink"
                 :text="contentLink"
-                @click.native="goToBlock(i)"
+                :class="{ 'content-link--active' : i === activeLink }"
+                @click.native="onClick(i)"
             />
+            <div class="page-header__toolbar-background"></div>
         </div>
         <div class="page-header__connect">
             <phone-number
@@ -39,13 +44,27 @@ export default {
         phoneNumber,
         contentLink,
     },
+    data() {
+        return {
+            activeLink: 0,
+        }
+    },
+    methods: {
+        onClick(index) {
+            this.activeLink = index;
+            // this.goToBlock(index);
+        }
+    }
 }
 </script>
 
 <style lang="scss">
+@use "@/assets/css/colors.scss" as *;
+
 .page-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
     height: 12vh;
@@ -53,9 +72,39 @@ export default {
     padding: 0 4vw;
 
     .page-header__toolbar {
+        position: relative;
+
         display: flex;
-        width: 100%;
-        padding: 0 4vw;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        border-radius: 5rem;
+        border: 2px solid map-get($colors, 'primary-base');
+        background: map-get($colors, 'background-alternativ');
+
+        .page-header__toolbar-background {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 3;
+
+            height: 100%;
+            width: calc(100% / 6);
+
+            background: map-get($colors, 'primary-base');
+            border-radius: 5em;
+
+            transition: transform 0.25s ease-in-out;
+            will-change: transform;
+        }
+    }
+
+    @for $i from 0 through 6 {
+        .page-header__toolbar--active-#{$i} {
+            .page-header__toolbar-background {
+                transform: translateX(calc(100% * $i));
+            }
+        }
     }
 
     .page-header__connect {
