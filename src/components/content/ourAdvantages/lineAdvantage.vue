@@ -2,6 +2,7 @@
     <div
         class="line-advantage"
         @mouseenter="onEnter"
+        @click="onEnter"
     >
         <div class="line-advantage__index">
             0{{ index + 1 }}

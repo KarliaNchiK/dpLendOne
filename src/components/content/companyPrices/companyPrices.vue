@@ -60,6 +60,10 @@ export default {
     background: black;
     border-radius: 3vw;
 
+    & div, span, p {
+        color: white;
+    }
+
     .company-prices__prices-container {
         display: flex;
         justify-content: space-between;

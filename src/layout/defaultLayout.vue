@@ -209,6 +209,10 @@ export default {
                 img {
                     margin-left: 8px;
                 }
+
+                span {
+                    color: white;
+                }
             }
         }
 
@@ -228,6 +232,7 @@ export default {
             .page-footer__title-text {
                 font-size: calc(16px + 2vmin);
                 line-height: 1.2em;
+                color: white;
             }
 
             .page-footer__title-button {
@@ -248,6 +253,10 @@ export default {
             justify-content: space-between;
             margin-top: 4vh;
             width: 100%;
+
+            span {
+                color: white;
+            }
         }
     }
 
