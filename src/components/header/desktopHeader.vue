@@ -3,37 +3,16 @@
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
-            width="195"
-            height="25"
+            width="300"
+            height="40"
         >
-        <div
-            class="page-header__toolbar"
-            :class="`page-header__toolbar--active-${ activeBlock }`"
-        >
-            <content-link
-                v-for="(contentLink, i) in contentLinks"
-                :key="contentLink"
-                :text="contentLink"
-                :class="{ 'content-link--active' : i === activeBlock }"
-                @click.native="onClick(i)"
-            />
-            <div class="page-header__toolbar-background"></div>
-        </div>
         <div class="page-header__connect">
-            <phone-number
-                v-for="phoneNumber in phoneNumbers"
-                :key="phoneNumber"
-                :text="phoneNumber"
-            />
         </div>
     </header>
 </template>
 
 
 <script>
-import phoneNumber from '@/components/header/phoneNumber';
-import contentLink from "@/components/header/contentLink";
-
 export default {
     props: {
         contentLinks: Array,
@@ -41,25 +20,7 @@ export default {
         goToBlock: Function,
     },
     components: {
-        phoneNumber,
-        contentLink,
     },
-    computed: {
-        activeBlock: {
-            get() {
-                return this.$store.getters.activeBlock;
-            },
-            set(value) {
-                this.$store.commit("setActiveBlock", value);
-            }
-        }
-    },
-    methods: {
-        onClick(i) {
-            this.goToBlock(i);
-            this.activeBlock = i;
-        }
-    }
 }
 </script>
 
@@ -76,48 +37,12 @@ export default {
     justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
-    height: 10vh;
-    min-height: 80px;
-    padding: 0 5vw;
+    height: 5vh;
+    min-height: 60px;
+    padding: 0 15vw;
 
-    .page-header__toolbar {
-        position: relative;
-
-        display: flex;
-        box-sizing: border-box;
-        overflow: hidden;
-
-        border-radius: 5rem;
-        border: 2px solid map-get($colors, 'primary-base');
-        background: map-get($colors, 'background-alternativ');
-
-        .page-header__toolbar-background {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 3;
-
-            height: 100%;
-            width: calc(100% / 5);
-
-            background: map-get($colors, 'primary-base');
-            border-radius: 5em;
-
-            transition: transform 0.25s ease-in-out;
-            will-change: transform;
-        }
-    }
-
-    @for $i from 0 through 6 {
-        .page-header__toolbar--active-#{$i} {
-            .page-header__toolbar-background {
-                transform: translateX(calc(100% * $i));
-            }
-        }
-    }
-
-    .page-header__connect {
-        flex-shrink: 0;
-    }
+    box-shadow: 4px 0 8px grey;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
 }
 </style>

@@ -12,11 +12,11 @@ body {
     background: map-get($colors, 'background-base');
 
     &::-webkit-scrollbar {
-        width: 0.4vw;
+        width: 0.5vw;
     }
 
     &::-webkit-scrollbar-thumb {
-        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
         border-radius: 0.4vw;
     }
 }

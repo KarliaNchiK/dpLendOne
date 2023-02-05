@@ -1,6 +1,8 @@
 <template>
     <div>
         <dialog-form />
+        <layout-widgets />
+        <layout-menu :goToBlock="goToBlock" />
         <component
             :is="appHeader"
             class="app-page__header"
@@ -65,11 +67,15 @@
 <script>
 import LinksColumn from "@/components/footer/linksColumn";
 import DialogForm from "@/components/ui/dialogForm";
+import LayoutWidgets from "@/layout/layoutWidgets";
+import LayoutMenu from "@/layout/layoutMenu";
 
 export default {
     name: 'App',
 
     components: {
+        LayoutMenu,
+        LayoutWidgets,
         DialogForm,
         LinksColumn,
     },
@@ -176,17 +182,7 @@ export default {
     }
 
     .app-page__header {
-        background: transparent;
-        box-shadow: 0 0 0 transparent;
-        backdrop-filter: blur(0);
-
         transition: all 0.25s ease-in-out;
-
-        &.page-header--active {
-            box-shadow: 4px 0 8px grey;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(16px);
-        }
     }
 
     .app-page__footer {
