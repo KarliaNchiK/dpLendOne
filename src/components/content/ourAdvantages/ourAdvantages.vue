@@ -46,9 +46,17 @@ export default {
     justify-content: space-between;
 
     flex-wrap: wrap;
+}
 
+@media (min-width: map-get($sizes, 'md')) {
     .line-advantage {
         width: 45%;
+    }
+}
+
+@media (max-width: map-get($sizes, 'md')) {
+    .line-advantage {
+        width: 100%;
     }
 }
 </style>

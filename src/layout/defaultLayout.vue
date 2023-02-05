@@ -114,9 +114,7 @@ export default {
         this.setActiveHeader();
     },
     mounted() {
-        if (!this.isMobile) {
-            window.addEventListener('scroll', this.onScroll);
-        }
+        window.addEventListener('scroll', this.onScroll);
     },
     computed: {
         appHeader() {
@@ -178,14 +176,12 @@ export default {
     .app-page__header {
         background: transparent;
         box-shadow: 0 0 0 transparent;
-        backdrop-filter: blur(0);
 
         transition: all 0.25s ease-in-out;
 
         &.page-header--active {
             box-shadow: 4px 0 8px grey;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(16px);
+            background: white;
         }
     }
 

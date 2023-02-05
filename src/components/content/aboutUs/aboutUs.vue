@@ -75,18 +75,10 @@ export default {
             display: block;
             box-sizing: border-box;
             flex-shrink: 0;
-            padding: 2vh 2vw;
 
             border-radius: 2em;
             border: 2px solid map-get($colors, 'primary-base');
             box-shadow: 0 0 16px map-get($colors, 'primary-base');
-        }
-
-        .about-us__info-line-text,
-        .about-us__info-line-text span {
-            font-size: 24px;
-            line-height: 1.4em;
-            word-spacing: 1rem;
         }
 
         .about-us__info-line-text span {
@@ -102,6 +94,14 @@ export default {
 
         .about-us__info-line-text {
             width: 35%;
+            padding: 2vh 2vw;
+        }
+
+        .about-us__info-line-text,
+        .about-us__info-line-text span {
+            font-size: 24px;
+            line-height: 1.4em;
+            word-spacing: 1rem;
         }
     }
 }
@@ -109,6 +109,14 @@ export default {
 @media (max-width: #{map-get($sizes, 'md')}) {
     .about-us__info-line-text {
         width: 100%;
+        padding: 2vh 5vw;
+    }
+
+    .about-us__info-line-text,
+    .about-us__info-line-text span {
+        font-size: calc(10px + 1.6vmin);
+        line-height: 1.4em;
+        word-spacing: 1rem;
     }
 }
 </style>

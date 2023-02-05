@@ -54,6 +54,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/css/colors.scss' as *;
+@use '@/assets/css/sizes.scss' as *;
 
 .active-staff {
     position: relative;
@@ -62,8 +63,6 @@ export default {
     align-items: center;
     box-sizing: border-box;
     width: 100%;
-    height: 60vh;
-    min-height: 400px;
     padding: 2vh 1vw;
 
     background: radial-gradient(circle at 10% 20%, map-get($colors, 'primary-base'), white 20%);
@@ -92,7 +91,6 @@ export default {
     .active-staff__info-container {
         box-sizing: border-box;
         height: 100%;
-        padding: 2vh 1vw;
         overflow: hidden;
 
         background: map-get($colors, 'background-base');
@@ -152,6 +150,27 @@ export default {
         color: map-get($colors, 'primary-base');
         border-color: map-get($colors, 'primary-base');
         border-width: 2px;
+    }
+}
+
+@media (min-width: map-get($sizes, 'md')) {
+    .active-staff {
+        height: 60vh;
+        min-height: 400px;
+
+        .active-staff__info-container {
+            padding: 2vh 1vw;
+        }
+    }
+}
+
+@media (max-width: map-get($sizes, 'md')) {
+    .active-staff {
+        flex-direction: column;
+
+        .active-staff__info-container {
+            padding: 2vh 8vw;
+        }
     }
 }
 </style>
