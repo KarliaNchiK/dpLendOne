@@ -181,7 +181,6 @@ export default {
 
         &.page-header--active {
             box-shadow: 4px 0 8px grey;
-            background: white;
         }
     }
 
@@ -252,12 +251,24 @@ export default {
     }
 
     @media (min-width: map-get($sizes, 'md')) {
+        .app-page__header {
+            &.page-header--active {
+                background: rgba(255,255,255,.4);
+                backdrop-filter: blur(12px);
+            }
+        }
+
         .page-footer__first-block {
             width: 100%;
         }
     }
 
     @media (max-width: map-get($sizes, 'md')) {
+        .app-page__header {
+            &.page-header--active {
+                background: white;
+            }
+        }
         .page-footer__links-container {
             width: 100%;
             justify-content: space-between;
