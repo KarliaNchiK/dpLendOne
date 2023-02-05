@@ -1,11 +1,11 @@
 <template>
     <div class="company-solutions">
         <div class="company-solutions__info solutions-info">
-            <p class="solutions-info__value-proposition">
-                Доверьте нам всю рутину <br /> по поиску и управлению персоналом
-            </p>
             <p class="solutions-info__title">
-                Аутсорсинг <br/> персонала
+                Аутсорсинг
+            </p>
+            <p class="solutions-info__value-proposition">
+                Доверьте нам всю рутину по поиску и управлению персоналом
             </p>
             <p class="solutions-info__info">
                 Быстро подберём для вас персонал по <span>оптимальным ценам</span>.
@@ -57,30 +57,35 @@ export default {
 
 .company-solutions {
     position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
+    width: 100%;
 
     .solutions-info {
         position: relative;
         z-index: 3;
 
+        text-align: center;
+
         .solutions-info__value-proposition {
-            font-size: calc(12px + 0.5vh + 0.4vw);
+            margin: 5vh 0;
+
+            font-size: calc(10px + 0.6vw);
             line-height: 1.2em;
         }
 
         .solutions-info__title {
-            margin-top: 3vh;
-
             font-size: calc(16px + 5vmax);
             line-height: 1em;
+            font-weight: 900;
         }
 
         .solutions-info__info {
-            margin-top: 3vh;
-            padding-right: 20%;
-
-            font-size: calc(16px + 0.1vw);
-            line-height: 1.4em;
+            font-size: calc(10px + 0.5vw);
+            line-height: 1.6em;
 
             span {
                 font-size: inherit;
@@ -91,7 +96,7 @@ export default {
         }
 
         .solutions-info__actions {
-            margin-top: 3vh;
+            margin-top: 4vh;
 
             .solutions-info__call,
             .solutions-info__bid {
@@ -135,12 +140,11 @@ export default {
 
     @media (min-width: map-get($sizes, 'md')) {
         & {
-            padding-top: 15vh;
-            margin: 0 0 20vh;
+            padding: 16vh 0;
         }
 
         .solutions-info {
-            width: 60%;
+            width: 50%;
 
             .solutions-info__call,
             .solutions-info__bid {
@@ -148,15 +152,13 @@ export default {
             }
 
             .solutions-info__bid {
-                margin-right: 1vw;
+                margin-right: 5vw;
             }
         }
     }
 
     @media (max-width: map-get($sizes, 'md')) {
         .solutions-info {
-            width: 100%;
-
             .solutions-info__actions {
                 display: flex;
                 justify-content: space-between;
