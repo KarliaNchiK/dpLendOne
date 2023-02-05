@@ -34,21 +34,23 @@ export default {
     text-transform: uppercase;
     font-weight: 500;
 
-    transition: color 0.4s ease;
-
     .content-link__text {
         position: relative;
         z-index: 4;
 
         font-size: calc(8px + 0.4vmin);
         white-space: nowrap;
+
+        transition: color 0.4s ease;
     }
 
     &.content-link--active {
-        color: white;
+        .content-link__text {
+            color: white !important;
+        }
     }
 
-    &:hover:not(.content-link--active) {
+    &:hover:not(.content-link--active) .content-link__text {
         color: map-get($colors, 'primary-base');
     }
 }

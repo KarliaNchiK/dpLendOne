@@ -137,6 +137,7 @@ export default {
                 width: 105%;
                 height: 105%;
 
+                border-radius: 50%;
                 background: radial-gradient(circle at 80%,
                     rgba(20, 120, 60, 1),
                     rgba(120, 210, 120, 1),

@@ -201,6 +201,10 @@ export default {
 
         color: white;
 
+        span {
+            color: white;
+        }
+
         .page-footer__first-block {
             display: flex;
             justify-content: space-between;
