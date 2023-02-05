@@ -30,16 +30,6 @@
                 </button>
             </div>
         </div>
-        <div
-            v-if="!isMobile"
-            class="company-solutions__background"
-        >
-            <img
-                src="@imgs/work.gif"
-                alt="Фон"
-                class="company-solutions__background-gif"
-            >
-        </div>
     </div>
 </template>
 
@@ -67,8 +57,7 @@ export default {
 
 .company-solutions {
     position: relative;
-
-    margin-top: 10vh;
+    box-sizing: border-box;
 
     .solutions-info {
         position: relative;
@@ -144,32 +133,10 @@ export default {
         }
     }
 
-    .company-solutions__background {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 2;
-
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        width: 100%;
-        height: 100%;
-
-        mix-blend-mode: multiply;
-
-        .company-solutions__background-gif {
-            border-radius: 18px;
-            object-fit: contain;
-
-            max-height: 100%;
-            max-width: 60%;
-        }
-    }
-
     @media (min-width: map-get($sizes, 'md')) {
         & {
-            margin: 10vh -10vw 0;
+            padding-top: 15vh;
+            margin: 0 0 20vh;
         }
 
         .solutions-info {

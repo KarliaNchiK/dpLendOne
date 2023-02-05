@@ -59,17 +59,17 @@ export default {
     justify-content: space-between;
     box-sizing: border-box;
     min-height: 50vh;
-    margin-top: 30vh;
+    margin-top: 20vh;
 
     color: black;
 
     box-shadow: 6px 6px 12px rgba(0,0,0,.25);
     background: linear-gradient(
             -45deg,
-            transparentize(map-get($colors, 'info'), 0.4),
-            map-get($colors, 'light-shadow') 20%,
-            map-get($colors, 'light-shadow') 80%,
-            transparentize(map-get($colors, 'primary-base'), 0.4)
+            transparentize(map-get($colors, 'info'), 0.2),
+            map-get($colors, 'light-shadow') 25%,
+            map-get($colors, 'light-shadow') 75%,
+            transparentize(map-get($colors, 'primary-base'), 0.5)
     );
     border-radius: 3vw;
 
@@ -200,7 +200,7 @@ export default {
 @media (min-width: #{map-get($sizes, 'md')}) {
 
     .benefit-calculator {
-        padding: 10vh 3vw;
+        padding: 7vh 3vw;
     }
 
     .benefit-calculator__text {
@@ -208,7 +208,7 @@ export default {
     }
 
     .benefit-calculator__img-container {
-        margin: 10vh 0 5vh;
+        margin: 5vh 0;
 
         .benefit-calculator__img {
             height: 20vh;

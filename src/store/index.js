@@ -9,6 +9,7 @@ export default new Vuex.Store({
         windowWidth: 0,
         isMobile: false,
         scrollTop: 0,
+        activeBlock: 0,
     },
     mutations: {
         setDialogActive(state, status) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
         },
         setScrollTop(state, scroll) {
             state.scrollTop = scroll;
+        },
+        setActiveBlock(state, activeBlock) {
+            state.activeBlock = activeBlock;
         }
     },
     getters: {
@@ -29,5 +33,6 @@ export default new Vuex.Store({
         windowWidth: s => s.windowWidth,
         isMobile: s => s.isMobile,
         scrollTop: s => s.scrollTop,
+        activeBlock: s => s.activeBlock,
     },
 });

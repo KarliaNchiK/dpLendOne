@@ -4,6 +4,7 @@
         <component
             :is="appHeader"
             class="app-page__header"
+            :class="{'page-header--active': scrollTop !== 0}"
             :contentLinks="contentLinks"
             :phoneNumbers="phoneNumbers"
             :goToBlock="goToBlock"
@@ -52,19 +53,6 @@
                         >
                     </div>
                 </div>
-                <div class="page-footer__title">
-                    <div class="page-footer__title-text">
-                        Повышение стабильности и прибыли всего в 1 клике.
-                    </div>
-                    <div class="page-footer__title-button">
-                        <dp-button
-                            class="page-footer__button"
-                            @click="openDialog"
-                        >
-                            Оформить заявку
-                        </dp-button>
-                    </div>
-                </div>
                 <div class="page-footer__end">
                     <span>© {{ new Date().getFullYear() }} ООО "Деловой подход+"</span>
                     <span>Режим работы - с 8:00 до 20:00. Без выходных</span>
@@ -88,7 +76,7 @@ export default {
 
     data: () => ({
         phoneNumbers: ['8 843 245 68 18', '8 904 666 66 46'],
-        contentLinks: ["Решения", "Персонал", "Достижения", "Цены", "Выгода", "О нас"],
+        contentLinks: ["Решения", "Персонал", "Достижения", "Выгода", "О нас"],
         socialLinks: [
             {
                 title: 'Телеграм',
@@ -142,6 +130,9 @@ export default {
         windowResize() {
             return this.$store.getters.windowWidth;
         },
+        scrollTop() {
+            return this.$store.getters.scrollTop;
+        },
     },
     methods: {
         setActiveHeader() {
@@ -184,6 +175,20 @@ export default {
         transition: padding 0.25s;
     }
 
+    .app-page__header {
+        background: transparent;
+        box-shadow: 0 0 0 transparent;
+        backdrop-filter: blur(0);
+
+        transition: all 0.25s ease-in-out;
+
+        &.page-header--active {
+            box-shadow: 4px 0 8px grey;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+        }
+    }
+
     .app-page__footer {
         width: 100%;
         padding: 2vh 0 5vh;
@@ -224,32 +229,6 @@ export default {
             box-sizing: border-box;
         }
 
-        .page-footer__title {
-            display: flex;
-            width: 100%;
-            margin-top: 6vh;
-            padding-bottom: 5vh;
-
-            border-bottom: 1px solid rgba(255,255,255,.65);
-
-            .page-footer__title-text {
-                font-size: calc(16px + 2vmin);
-                line-height: 1.2em;
-            }
-
-            .page-footer__title-button {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                flex-shrink: 0;
-
-                button {
-                    border-radius: 34px;
-                    padding: 24px 32px;
-                }
-            }
-        }
-
         .page-footer__end {
             display: flex;
             justify-content: space-between;
@@ -261,7 +240,7 @@ export default {
     @media (min-width: #{map-get($sizes, 'lg')}) {
         .page-content,
         .page-footer {
-            padding: 0 15vw;;
+            padding: 0 15vw;
         }
     }
 
@@ -276,36 +255,12 @@ export default {
         .page-footer__first-block {
             width: 100%;
         }
-
-        .page-footer__title-text {
-            width: 80%;
-            padding-left: 5%;
-            box-sizing: border-box;
-        }
-
-        .page-footer__title-button {
-            box-sizing: border-box;
-            padding-right: 5%;
-        }
     }
 
     @media (max-width: map-get($sizes, 'md')) {
         .page-footer__links-container {
             width: 100%;
             justify-content: space-between;
-        }
-
-        .page-footer__title {
-            flex-direction: column;
-        }
-
-        .page-footer__title-button {
-            width: 100%;
-            margin-top: 5vh;
-
-            .page-footer__button {
-                width: 100%;
-            }
         }
     }
 }

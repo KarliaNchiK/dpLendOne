@@ -1,8 +1,5 @@
 <template>
-    <header
-        class="page-header"
-        :class="{'page-header--active': scrollTop !== 0}"
-    >
+    <header class="page-header">
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
@@ -11,13 +8,13 @@
         >
         <div
             class="page-header__toolbar"
-            :class="`page-header__toolbar--active-${ activeLink }`"
+            :class="`page-header__toolbar--active-${ activeBlock }`"
         >
             <content-link
                 v-for="(contentLink, i) in contentLinks"
                 :key="contentLink"
                 :text="contentLink"
-                :class="{ 'content-link--active' : i === activeLink }"
+                :class="{ 'content-link--active' : i === activeBlock }"
                 @click.native="onClick(i)"
             />
             <div class="page-header__toolbar-background"></div>
@@ -47,20 +44,20 @@ export default {
         phoneNumber,
         contentLink,
     },
-    data() {
-        return {
-            activeLink: 0,
-        }
-    },
     computed: {
-        scrollTop() {
-            return this.$store.getters.scrollTop;
+        activeBlock: {
+            get() {
+                return this.$store.getters.activeBlock;
+            },
+            set(value) {
+                this.$store.commit("setActiveBlock", value);
+            }
         }
     },
     methods: {
-        onClick(index) {
-            this.activeLink = index;
-            this.goToBlock(index);
+        onClick(i) {
+            this.goToBlock(i);
+            this.activeBlock = i;
         }
     }
 }
@@ -79,20 +76,9 @@ export default {
     justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
-    height: 12vh;
+    height: 10vh;
     min-height: 80px;
     padding: 0 5vw;
-    background: transparent;
-    box-shadow: 0 0 0 transparent;
-    backdrop-filter: blur(0);
-
-    transition: all 0.25s ease-in-out;
-
-    &.page-header--active {
-        box-shadow: 4px 0 8px grey;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(16px);
-    }
 
     .page-header__toolbar {
         position: relative;
@@ -112,7 +98,7 @@ export default {
             z-index: 3;
 
             height: 100%;
-            width: calc(100% / 6);
+            width: calc(100% / 5);
 
             background: map-get($colors, 'primary-base');
             border-radius: 5em;

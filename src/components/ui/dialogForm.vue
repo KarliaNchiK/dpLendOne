@@ -1,6 +1,7 @@
 <template>
     <transition name="fade">
         <div
+            ref="dialog"
             v-if="active"
             class="dialog-form"
             role="dialog"
@@ -86,6 +87,7 @@ export default {
                 city: false,
             },
             sendSuccess: false,
+            showOverlay: false,
         }
     },
     watch: {
@@ -177,6 +179,12 @@ export default {
     width: 100%;
     height: 100%;
 
+    &.fade-enter-to {
+        .dialog-form__overlay {
+            backdrop-filter: blur(0);
+        }
+    }
+
     .dialog-form__overlay {
         position: absolute;
         z-index: 9991;
@@ -184,7 +192,10 @@ export default {
         width: 100%;
         height: 100%;
 
-        background: rgba(0,0,0,.4);
+        transition: all 0.35s ease-in-out;
+
+        background: rgba(180,180,180,.1);
+        backdrop-filter: blur(8px);
     }
 
     .dialog-form__content {
@@ -271,7 +282,7 @@ export default {
         width: 50%;
 
         .dialog-form__inputs {
-            width: 60%;
+            width: 50%;
         }
     }
 }
