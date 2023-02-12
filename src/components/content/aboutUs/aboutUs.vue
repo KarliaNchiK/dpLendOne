@@ -89,6 +89,16 @@
 
         overflow: hidden;
 
+        .about-us__strong-title {
+            max-width: 100%;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+        }
+
         .about-us__info {
             border-top: 1px solid grey;
             padding-top: 5vh;
