@@ -20,9 +20,7 @@
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
-            width="195"
-            height="25"
-            style="z-index: 999; position: relative;"
+            class="page-header__logo"
         >
     </header>
 </template>
@@ -67,6 +65,14 @@ export default {
     height: 12vh;
     min-height: 80px;
     padding: 0 4vw;
+
+    .page-header__logo {
+        position: relative;
+        z-index: 999;
+
+        width: 20vmin;
+        height: 20vmin;
+    }
 
     .page-header__activator-container {
         position: relative;

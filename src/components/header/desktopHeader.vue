@@ -3,8 +3,7 @@
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
-            width="195"
-            height="25"
+            class="page-header__logo"
         >
         <div class="page-header__toolbar">
             <content-link
@@ -51,6 +50,11 @@ export default {
     height: 12vh;
     min-height: 80px;
     padding: 0 4vw;
+
+    .page-header__logo {
+        width: 10vmin;
+        height: 10vmin;
+    }
 
     .page-header__toolbar {
         display: flex;

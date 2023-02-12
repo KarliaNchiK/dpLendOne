@@ -14,11 +14,10 @@
         <footer class="app-page__footer">
             <div class="page-footer">
                 <img
+                    v-if="isMobile"
                     src="@imgs/logo-white.svg"
                     alt="Логотип"
-                    width="390"
-                    height="50"
-                    style="max-width: 100%; object-fit: contain"
+                    class="page-footer__logo"
                 >
                 <div class="page-footer__first-block">
                     <div class="page-footer__links-container">
@@ -41,14 +40,10 @@
                         class="page-footer__back-to-top"
                         @click="goToTop"
                     >
-                        <span>
-                            Пролистать вверх
-                        </span>
                         <img
-                            src="@icons/arrow-up.svg"
-                            alt="Вверх"
-                            width="16"
-                            height="16"
+                            src="@imgs/logo-white.svg"
+                            alt="Логотип"
+                            class="page-footer__logo"
                         >
                     </div>
                 </div>
@@ -66,7 +61,7 @@
                     </div>
                 </div>
                 <div class="page-footer__end">
-                    <span>© {{ new Date().getFullYear() }} ООО "Деловой подход+"</span>
+                    <span>© {{ new Date().getFullYear() }} Staff Future </span>
                     <span>Режим работы - с 8:00 до 20:00. Без выходных</span>
                 </div>
             </div>
@@ -192,6 +187,11 @@ export default {
         justify-content: center;
 
         color: white;
+
+        .page-footer__logo {
+            width: 20vmin;
+            height: 20vmin;
+        }
 
         .page-footer__first-block {
             display: flex;
