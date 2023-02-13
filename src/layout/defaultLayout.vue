@@ -4,6 +4,7 @@
         <component
             :is="appHeader"
             class="app-page__header"
+            :class="{'page-header--active': scrollTop !== 0}"
             :contentLinks="contentLinks"
             :phoneNumbers="phoneNumbers"
             :goToBlock="goToBlock"
@@ -52,19 +53,6 @@
                         >
                     </div>
                 </div>
-                <div class="page-footer__title">
-                    <div class="page-footer__title-text">
-                        Повышение стабильности и прибыли всего в 1 клике.
-                    </div>
-                    <div class="page-footer__title-button">
-                        <dp-button
-                            class="page-footer__button"
-                            @click="openDialog"
-                        >
-                            Оформить заявку
-                        </dp-button>
-                    </div>
-                </div>
                 <div class="page-footer__end">
                     <span>© {{ new Date().getFullYear() }} ООО "Деловой подход+"</span>
                     <span>Режим работы - с 8:00 до 20:00. Без выходных</span>
@@ -88,7 +76,7 @@ export default {
 
     data: () => ({
         phoneNumbers: ['8 843 245 68 18', '8 904 666 66 46'],
-        contentLinks: ["Решения", "Предложения", "Достижения", "Цены", "Калькулятор", "О нас"],
+        contentLinks: ["Решения", "Персонал", "Достижения", "Выгода", "О нас"],
         socialLinks: [
             {
                 title: 'Телеграм',
@@ -125,6 +113,9 @@ export default {
         window.addEventListener('resize', this.onResize);
         this.setActiveHeader();
     },
+    mounted() {
+        window.addEventListener('scroll', this.onScroll);
+    },
     computed: {
         appHeader() {
             const typeHeader = this.activeHeader;
@@ -136,6 +127,9 @@ export default {
         },
         windowResize() {
             return this.$store.getters.windowWidth;
+        },
+        scrollTop() {
+            return this.$store.getters.scrollTop;
         },
     },
     methods: {
@@ -152,6 +146,9 @@ export default {
         },
         onResize() {
             this.$store.commit("setWindowWidth", window.innerWidth);
+        },
+        onScroll() {
+            this.$store.commit("setScrollTop", document.documentElement.scrollTop);
         },
         goToBlock(index) {
             document.querySelector(`[name='start-block-${ index }']`).scrollIntoView(true);
@@ -171,10 +168,20 @@ export default {
 @use '@/assets/css/sizes.scss' as *;
 
 .app-page {
-    .page-header,
     .page-content,
     .page-footer {
         transition: padding 0.25s;
+    }
+
+    .app-page__header {
+        background: transparent;
+        box-shadow: 0 0 0 transparent;
+
+        transition: all 0.25s ease-in-out;
+
+        &.page-header--active {
+            box-shadow: 4px 0 8px grey;
+        }
     }
 
     .app-page__footer {
@@ -192,6 +199,10 @@ export default {
         justify-content: center;
 
         color: white;
+
+        span {
+            color: white;
+        }
 
         .page-footer__first-block {
             display: flex;
@@ -217,32 +228,6 @@ export default {
             box-sizing: border-box;
         }
 
-        .page-footer__title {
-            display: flex;
-            width: 100%;
-            margin-top: 6vh;
-            padding-bottom: 5vh;
-
-            border-bottom: 1px solid rgba(255,255,255,.65);
-
-            .page-footer__title-text {
-                font-size: calc(16px + 2vmin);
-                line-height: 1.2em;
-            }
-
-            .page-footer__title-button {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                flex-shrink: 0;
-
-                button {
-                    border-radius: 34px;
-                    padding: 24px 32px;
-                }
-            }
-        }
-
         .page-footer__end {
             display: flex;
             justify-content: space-between;
@@ -252,57 +237,41 @@ export default {
     }
 
     @media (min-width: #{map-get($sizes, 'lg')}) {
-        $paddingPage: 0 15vw;
-
         .page-content,
         .page-footer {
-            padding: $paddingPage;
+            padding: 0 15vw;
         }
     }
 
     @media (max-width: #{map-get($sizes, 'lg')}) {
-        $paddingPage: 0 2vw;
-
         .page-content,
         .page-footer {
-            padding: $paddingPage;
+            padding: 0 2vw;
         }
     }
 
     @media (min-width: map-get($sizes, 'md')) {
+        .app-page__header {
+            &.page-header--active {
+                background: rgba(255,255,255,.4);
+                backdrop-filter: blur(12px);
+            }
+        }
+
         .page-footer__first-block {
             width: 100%;
-        }
-
-        .page-footer__title-text {
-            width: 80%;
-            padding-left: 5%;
-            box-sizing: border-box;
-        }
-
-        .page-footer__title-button {
-            box-sizing: border-box;
-            padding-right: 5%;
         }
     }
 
     @media (max-width: map-get($sizes, 'md')) {
+        .app-page__header {
+            &.page-header--active {
+                background: white;
+            }
+        }
         .page-footer__links-container {
             width: 100%;
             justify-content: space-between;
-        }
-
-        .page-footer__title {
-            flex-direction: column;
-        }
-
-        .page-footer__title-button {
-            width: 100%;
-            margin-top: 5vh;
-
-            .page-footer__button {
-                width: 100%;
-            }
         }
     }
 }

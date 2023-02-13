@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
-/youSolutions
 /dp
+/youSolutions
+
 
 # local env files
 .env.local

@@ -1,15 +1,8 @@
 <template>
-    <header class="page-header">
-        <transition name="fade" mode="out-in">
-            <naw-draw
-                v-if="drawer"
-                class="page-header__naw-draw"
-                :contentLinks="contentLinks"
-                :phoneNumbers="phoneNumbers"
-                :goToBlock="goToBlock"
-                @close="onClick"
-            />
-        </transition>
+    <header
+        class="page-header"
+        :class="{'page-header--naw-draw': drawer}"
+    >
         <div class="page-header__activator-container">
             <naw-svg
                 class="page-header__activator"
@@ -22,8 +15,18 @@
             alt="Логотип"
             width="195"
             height="25"
-            style="z-index: 999; position: relative;"
+            style="z-index: 9985; position: relative;"
         >
+        <transition name="fade" mode="out-in">
+            <naw-draw
+                v-if="drawer"
+                class="page-header__naw-draw"
+                :contentLinks="contentLinks"
+                :phoneNumbers="phoneNumbers"
+                :goToBlock="goToBlock"
+                @close="onClick"
+            />
+        </transition>
     </header>
 </template>
 
@@ -59,36 +62,27 @@ export default {
 
 <style lang="scss">
 .page-header {
+    position: sticky;
+    top: 0;
+    z-index: 9980;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
-    height: 12vh;
+    height: 10vh;
     min-height: 80px;
     padding: 0 4vw;
 
     .page-header__activator-container {
         position: relative;
         width: 5vw;
-        z-index: 999;
+        z-index: 9985;
 
         .page-header__activator {
             cursor: pointer;
         }
-    }
-
-    .page-header__naw-draw {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        z-index: 998;
-
-        width: 100vw;
-        height: 100%;
-
-        background: white;
-        overflow: hidden;
     }
 }
 </style>

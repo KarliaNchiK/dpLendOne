@@ -43,10 +43,20 @@ export default {
 
 <style lang="scss">
 .naw-draw {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9982;
+
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     padding: 15vh 5vw 0;
+    width: 100vw;
+    height: 100%;
+
+    background: white;
+    overflow: hidden;
 
     .naw-draw__content {
         flex-grow: 1;

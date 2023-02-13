@@ -1,6 +1,8 @@
 <template>
     <div class="content-link">
-        <p class="content-link__text">{{ text }}</p>
+        <p class="content-link__text">
+            {{ text }}
+        </p>
     </div>
 </template>
 
@@ -22,41 +24,34 @@ export default {
 .content-link {
     position: relative;
 
+    box-sizing: border-box;
+    padding: 1vh 0;
+    width: 7vw;
+
+    text-align: center;
+
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 500;
 
-    transition: color 0.25s ease;
-
     .content-link__text {
-        font-size: calc(0.2vw + 12px);
+        position: relative;
+        z-index: 4;
+
+        font-size: calc(8px + 0.4vmin);
         white-space: nowrap;
+
+        transition: color 0.4s ease;
     }
 
-    &:not(:last-child) {
-        margin-right: 3vw;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-
-        width: 0;
-        height: 2px;
-
-        background: map-get($colors, 'primary-base');
-
-        transition: width 0.4s cubic-bezier(.85,.04,.55,.94);
-    }
-
-    &:hover,
-    &:first-child {
-        color: map-get($colors, 'primary-base');
-
-        &::after {
-            width: 100%;
+    &.content-link--active {
+        .content-link__text {
+            color: white !important;
         }
+    }
+
+    &:hover:not(.content-link--active) .content-link__text {
+        color: map-get($colors, 'primary-base');
     }
 }
 </style>
