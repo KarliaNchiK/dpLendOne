@@ -3,7 +3,7 @@
         <div class="about-us__strong-title">
             <img
                 src="@icons/titleFourBlock.svg"
-                alt="Подумай о нас"
+                alt="Узнай о нас"
             >
         </div>
         <div class="about-us__info">
