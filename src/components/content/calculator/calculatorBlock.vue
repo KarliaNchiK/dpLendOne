@@ -210,11 +210,11 @@ export default {
             this.results = [
                 {
                     title: 'При работе с нами <br/>(руб/мес)',
-                    value: ourOffer.toFixed(2),
+                    value: new Intl.NumberFormat("ru", { maximumFractionDigits: 2 }).format(ourOffer),
                 },
                 {
                     title: 'Расходы при собственном штате <br/>(руб/мес)',
-                    value: (ourOffer * this.percentPerState).toFixed(2),
+                    value: new Intl.NumberFormat("ru", { maximumFractionDigits: 2 }).format(ourOffer * this.percentPerState),
                 },
                 {
                     title: '<span> % </span> Вашей выгоды работая с нами',
