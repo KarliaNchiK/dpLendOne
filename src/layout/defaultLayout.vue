@@ -97,7 +97,7 @@ export default {
                 href: 'mailto:delovoi_podhod@inbox.ru'
             },
             {
-                title: 'РТ, 420021, г. Казань<br/>Ул. Татарстан, д. 22<br/>Офис 367',
+                title: 'РТ, 420021, г. Казань<br/>Ул. Габдуллы Тукая, д. 64<br/>Офис 307',
                 href: 'https://go.2gis.com/fmg9g0',
             }
         ],
