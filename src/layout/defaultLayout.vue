@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="page-footer__end">
-                    <span>© {{ new Date().getFullYear() }} ООО "Деловой подход+"</span>
+                    <span>© {{ new Date().getFullYear() }} You Solutions </span>
                     <span>Режим работы - с 8:00 до 20:00. Без выходных</span>
                 </div>
             </div>
