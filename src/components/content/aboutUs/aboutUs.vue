@@ -2,7 +2,7 @@
     <div class="about-us">
         <div class="about-us__strong-title">
             <img
-                src="@icons/titleFourBlock.svg"
+                :src="require(`@icons/titleFourBlock${ mobileSuffix }.svg`)"
                 alt="Подумай о нас"
             >
         </div>
@@ -25,6 +25,16 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    computed: {
+        mobileSuffix() {
+            return this.$store.getters.isMobile ? 'Mobile' : '';
+        }
+    }
+}
+</script>
 
 <style lang="scss">
 @use '@/assets/css/colors.scss' as *;
