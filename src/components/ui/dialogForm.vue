@@ -135,7 +135,7 @@ export default {
             event.preventDefault();
 
             if (this.isDataValid) {
-                fetch('http://staff-future.ru/go.php', {
+                fetch('http://yousolutions.ru/go.php', {
                     method: "POST",
                     headers: {
                         'Access-Control-Allow-Origin': '*',
