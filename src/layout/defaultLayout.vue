@@ -87,21 +87,21 @@ export default {
         socialLinks: [
             {
                 title: 'Телеграм',
-                href: 'https://t.me/Delovoi_podhod_bot'
+                href: 'https://t.me/+79991575127'
             },
             {
                 title: 'Whatsapp',
-                href: 'https://wa.me/79067242517'
+                href: 'https://wa.me/79991575127'
             },
         ],
         contactLinks: [
             {
-                title: '8 800 222 12 59',
-                href: 'tel:88002221259'
+                title: '8 904 666 66 46',
+                href: 'tel:89046666646'
             },
             {
-                title: 'delovoi_podhod@inbox.ru',
-                href: 'mailto:delovoi_podhod@inbox.ru'
+                title: 'dp.site@yandex.ru',
+                href: 'mailto:dp.site@yandex.ru'
             },
             {
                 title: 'РТ, 420021, г. Казань<br/>Ул. Габдуллы Тукая, д. 64<br/>Офис 307',

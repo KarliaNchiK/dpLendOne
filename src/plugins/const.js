@@ -87,7 +87,7 @@ export const typesShifts = [
         hours: 8,
     },
     {
-        title: '12 часов (+1)',
+        title: '11 часов (+1)',
         hours: 12,
     },
     {

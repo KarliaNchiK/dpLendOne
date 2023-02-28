@@ -2,7 +2,7 @@
     <div class="about-us">
         <div class="about-us__strong-title">
             <img
-                :src="require(`@icons/titleFourBlock${ mobileSuffix }.svg`)"
+                :src="require(`@icons/titleFourBlockMobile${ mobileSuffix }.svg`)"
                 alt="Подумай о нас"
             >
         </div>
@@ -47,6 +47,9 @@ export default {
     display: flex;
 
     .about-us__strong-title {
+      img {
+        max-width: 90%;
+      }
         position: sticky;
         top: 0;
         left: 0;
