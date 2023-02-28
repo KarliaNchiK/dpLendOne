@@ -82,7 +82,7 @@ export default {
     },
 
     data: () => ({
-        phoneNumbers: ['8 843 245 68 18', '8 904 666 66 46'],
+        phoneNumbers: ['8 843 245 69 29'],
         contentLinks: ["Решения", "Предложения", "Достижения", "Цены", "Калькулятор", "О нас"],
         socialLinks: [
             {
@@ -96,16 +96,16 @@ export default {
         ],
         contactLinks: [
             {
-                title: '8 904 666 66 46',
-                href: 'tel:89046666646'
+                title: '8 843 245 69 29',
+                href: 'tel:88432456929'
             },
             {
                 title: 'dp.site@yandex.ru',
                 href: 'mailto:dp.site@yandex.ru'
             },
             {
-                title: 'РТ, 420021, г. Казань<br/>Ул. Габдуллы Тукая, д. 64<br/>Офис 307',
-                href: 'https://go.2gis.com/fmg9g0',
+                title: 'РТ, 420025, г. Казань<br/>Мамадышский тракт, д. 10',
+                href: 'https://go.2gis.com/onsgb',
             }
         ],
         activeHeader: "",
