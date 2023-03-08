@@ -1,8 +1,8 @@
 <template>
     <div>
         <dialog-form />
-        <layout-widgets />
-        <layout-menu :goToBlock="goToBlock" />
+        <layout-widgets v-if="!isMobile" />
+        <layout-menu v-if="!isMobile" :goToBlock="goToBlock" :contentLinks="contentLinks" />
         <component
             :is="appHeader"
             class="app-page__header"
@@ -17,7 +17,7 @@
         <footer class="app-page__footer">
             <div class="page-footer">
                 <img
-                    src="@imgs/logo-white.svg"
+                    src="@imgs/logo.svg"
                     alt="Логотип"
                     width="390"
                     height="50"
@@ -26,16 +26,16 @@
                 <div class="page-footer__first-block">
                     <div class="page-footer__links-container">
                         <links-column
-                            title="Изучить"
+                            title="Перейти"
                             :quick-links="contentLinks.map(title => ({title, haveListener: true}))"
                             @click="(i) => goToBlock(i)"
                         />
                         <links-column
-                            title="Связаться"
+                            title="Социальные сети"
                             :quick-links="socialLinks"
                         />
                         <links-column
-                            title="Контакты"
+                            title="Наши контакты"
                             :quick-links="contactLinks"
                         />
                     </div>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="page-footer__end">
-                    <span>© {{ new Date().getFullYear() }} ООО "Деловой подход+"</span>
+                    <span>© {{ new Date().getFullYear() }} ПерсЭксп</span>
                     <span>Режим работы - с 8:00 до 20:00. Без выходных</span>
                 </div>
             </div>
@@ -82,7 +82,7 @@ export default {
 
     data: () => ({
         phoneNumbers: ['8 843 245 68 18', '8 904 666 66 46'],
-        contentLinks: ["Решения", "Персонал", "Достижения", "Выгода", "О нас"],
+        contentLinks: ["Визитка", "Достижения", "Персонал", "Выгода", "О нас"],
         socialLinks: [
             {
                 title: 'Телеграм',
@@ -190,7 +190,7 @@ export default {
         padding: 2vh 0 5vh;
         box-sizing: border-box;
 
-        background: #21201e;
+        background: #2f3030;
     }
 
     .page-footer {
@@ -205,6 +205,7 @@ export default {
             display: flex;
             justify-content: space-between;
             margin-top: 6vh;
+            width: 100%;
 
             .page-footer__back-to-top {
                 display: flex;
@@ -233,29 +234,20 @@ export default {
         }
     }
 
-    @media (min-width: #{map-get($sizes, 'lg')}) {
+    @media (min-width: #{map-get($sizes, 'md')}) {
         .page-content,
         .page-footer {
             padding: 0 15vw;
         }
     }
 
-    @media (max-width: #{map-get($sizes, 'lg')}) {
-        .page-content,
+    @media (max-width: map-get($sizes, 'md')) {
         .page-footer {
+            box-sizing: border-box;
             padding: 0 2vw;
         }
-    }
 
-    @media (min-width: map-get($sizes, 'md')) {
-        .page-footer__first-block {
-            width: 100%;
-        }
-    }
-
-    @media (max-width: map-get($sizes, 'md')) {
         .page-footer__links-container {
-            width: 100%;
             justify-content: space-between;
         }
     }

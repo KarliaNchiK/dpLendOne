@@ -43,6 +43,6 @@ export default {
 
     box-shadow: 4px 0 8px grey;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(4px);
 }
 </style>

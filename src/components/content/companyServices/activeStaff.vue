@@ -1,6 +1,6 @@
 <template>
     <div class="active-staff">
-        <div class="active-staff__img-container">
+        <div class="active-staff__img-container" v-if="!isMobile">
             <transition name="fade" mode="out-in">
                 <img
                     :key="imgName"
@@ -14,15 +14,15 @@
             <transition name="slide-x" mode="out-in">
                 <div class="staff-info-container__div" :key="title">
                     <div class="staff-info-container__title">
-                        {{ title }}
+                        <p>{{ title }}</p>
+                        <p>
+                            <span>{{ price }}</span>&nbsp;Руб. (С учётом НДС)
+                        </p>
                     </div>
                     <div class="staff-info-container__text">
                         {{ text }}
                     </div>
                     <div class="staff-info-container__price">
-                        <div>
-                            <span>{{ price }}</span>&nbsp;Руб. (С учётом НДС)
-                        </div>
                         <dp-button
                             class="staff-info__action"
                             @click="openDialog"
@@ -44,6 +44,11 @@ export default {
         text: String,
         imgName: String,
     },
+    computed: {
+        isMobile() {
+            return this.$store.getters.isMobile;
+        },
+    },
     methods: {
         openDialog() {
             window.openDialog();
@@ -54,50 +59,42 @@ export default {
 
 <style lang="scss">
 @use '@/assets/css/colors.scss' as *;
+@use '@/assets/css/sizes.scss' as *;
 
 .active-staff {
     position: relative;
 
     display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    width: 100%;
+    justify-content: space-between;
     height: 60vh;
     min-height: 400px;
-    padding: 2vh 1vw;
-
-    background: radial-gradient(circle at 10% 20%, map-get($colors, 'primary-base'), white 20%);
-    border-radius: 2em;
-    box-shadow: 0 0 12px rgba(0,0,0,.25);
 
     .active-staff__img-container {
         position: relative;
 
-        display: flex;
-        box-sizing: border-box;
         flex-shrink: 0;
-        justify-content: center;
-        width: 60%;
+        width: 55%;
         height: 100%;
-        padding-right: 1vw;
+
+        border-radius: 2em;
+        box-shadow: 0 0 6px rgba(0,0,0,.25);
 
         .active-staff__img {
-            max-width: 100%;
+            width: 100%;
             height: 100%;
+            object-fit: cover;
 
-            border-radius: 2em;
+            border-radius: inherit;
         }
     }
 
     .active-staff__info-container {
         box-sizing: border-box;
         height: 100%;
-        padding: 2vh 1vw;
         overflow: hidden;
 
-        background: map-get($colors, 'background-base');
-        border-radius: 2em;
-        box-shadow: inset 0 0 12px rgba(0,0,0,.25);
+        background: white;
+        box-shadow: 0 0 6px rgba(0,0,0,.25);
 
         .staff-info-container__div {
             display: flex;
@@ -106,9 +103,24 @@ export default {
         }
 
         .staff-info-container__title {
-            font-weight: 600;
-            font-size: calc(14px + 0.6vw);
-            line-height: 1.2em;
+            p:first-child {
+                font-weight: 600;
+                font-size: calc(14px + 0.6vw);
+                line-height: 1.2em;
+            }
+
+            p:last-child {
+                margin-top: 1vh;
+
+                font-size: calc(12px + 0.2vw);
+                line-height: 1.2em;
+
+                span {
+                    font-weight: 600;
+                    font-size: inherit;
+                    line-height: inherit;
+                }
+            }
         }
 
         .staff-info-container__text {
@@ -120,8 +132,8 @@ export default {
             border-top: 1px solid grey;
             border-bottom: 1px solid grey;
 
-            font-size: calc(12px + 1vw);
-            line-height: 1.2em;
+            font-size: calc(11px + 0.6vmin);
+            line-height: 1.4em;
         }
 
         .staff-info-container__price {
@@ -138,20 +150,38 @@ export default {
 
         .staff-info-container__price span {
             font-weight: 600;
-            color: map-get($colors, 'primary-base');
+            color: black;
         }
     }
 
     .staff-info__action {
+        width: 100%;
         padding: 2vh 1vw;
 
         font-size: calc(10px + 0.2vw);
         line-height: 1.2em;
         font-weight: 500;
 
-        color: map-get($colors, 'primary-base');
+        color: black;
         border-color: map-get($colors, 'primary-base');
         border-width: 2px;
+    }
+}
+
+@media (min-width: map-get($sizes, 'lg')) {
+    .active-staff__info-container {
+        width: 40%;
+        padding: 2vh 1vw;
+
+        border-radius: 2em;
+    }
+}
+
+@media (max-width: map-get($sizes, 'lg')) {
+    .active-staff__info-container {
+        padding: 2vh 2vw;
+
+        border-radius: 1em;
     }
 }
 </style>

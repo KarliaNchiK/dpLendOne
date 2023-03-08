@@ -195,7 +195,7 @@ export default {
         transition: all 0.35s ease-in-out;
 
         background: rgba(180,180,180,.1);
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(4px);
     }
 
     .dialog-form__content {
@@ -210,13 +210,9 @@ export default {
         min-height: 300px;
         padding: 5vh 5vw;
 
-        background: linear-gradient(
-                -45deg,
-                map-get($colors, 'info'),
-                map-get($colors, 'light-shadow') 20%,
-                map-get($colors, 'light-shadow') 80%,
-                map-get($colors, 'primary-base')
-        );
+        background-image: url("@imgs/dialogBackground.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
         border-radius: 24px;
 
         .dialog-form__title-right {
@@ -280,6 +276,7 @@ export default {
 @media (min-width: #{map-get($sizes, 'md')}) {
     .dialog-form__content {
         width: 50%;
+        background-position: center left;
 
         .dialog-form__inputs {
             width: 50%;
@@ -290,6 +287,7 @@ export default {
 @media (max-width: #{map-get($sizes, 'md')}) {
     .dialog-form__content {
         width: 90%;
+        background-position: center right;
 
         .dialog-form__inputs {
             width: 100%;

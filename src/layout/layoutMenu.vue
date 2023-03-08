@@ -17,11 +17,7 @@
 export default {
     props: {
         goToBlock: Function,
-    },
-    data() {
-        return {
-            contentLinks: ["Решения", "Персонал", "Достижения", "Выгода", "О нас"],
-        }
+        contentLinks: Array,
     },
     computed: {
         activeBlock: {
@@ -47,6 +43,7 @@ export default {
 
 .layout-menu {
     position: fixed;
+    z-index: 900;
     left: 1vw;
     top: 50%;
 
@@ -60,7 +57,7 @@ export default {
         position: relative;
 
         box-sizing: border-box;
-        padding: 0.5vmin 1vmin;
+        padding: 0.5vmin 2vmin;
 
         font-size: calc(12px + 0.4vw);
         line-height: 1.4em;
@@ -93,7 +90,7 @@ export default {
                 map-get($colors, 'primary-base') 80%,
                 lighten(map-get($colors, 'primary-base'), 10%)
             );
-            border-radius: 5em;
+            border-radius: 0 5em 5em 0;
             opacity: 0;
 
             transition: opacity 0.25s ease-in-out;

@@ -129,6 +129,9 @@ export default {
         z-index: 5;
 
         padding: 0 6px;
+
+        font-size: calc(8px + 0.8vmin);
+
         transform: translateY(-50%);
 
         pointer-events: none;

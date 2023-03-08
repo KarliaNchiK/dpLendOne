@@ -12,7 +12,6 @@ import DefaultLayout from "@/layout/defaultLayout";
 
 export default {
     name: 'App',
-
     components: {
         DefaultLayout,
         pageContent

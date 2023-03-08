@@ -4,11 +4,15 @@
             class="layout-widgets__soc-icon layout-widgets__soc-icon--telegram"
             href="https://t.me/Delovoi_podhod_bot"
             target="_blank"
+            data-tippy-content="Связаться с нами в Telegram"
+            data-tippy-placement="left"
         ></a>
         <a
             class="layout-widgets__soc-icon layout-widgets__soc-icon--whatsapp"
             href="https://wa.me/79067242517"
             target="_blank"
+            data-tippy-content="Связаться с нами в WhatsApp"
+            data-tippy-placement="left"
         ></a>
     </div>
 </template>
@@ -24,6 +28,7 @@ export default {
     position: fixed;
     right: 1vw;
     top: 50%;
+    z-index: 100;
 
     display: flex;
     flex-direction: column;

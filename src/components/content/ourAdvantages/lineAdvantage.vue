@@ -1,9 +1,6 @@
 <template>
     <div class="line-advantage">
         <div class="line-advantage__title-container">
-            <div class="line-advantage__index">
-                0{{ index + 1 }}
-            </div>
             <div class="line-advantage__title">
                 {{ title }}
             </div>
@@ -44,11 +41,10 @@ export default {
     transition: opacity 0.4s ease-in-out;
 
     .line-advantage__title-container {
-        padding-right: 2vw;
         height: 40vh;
 
         writing-mode: vertical-rl;
-        border-right: 1px solid grey;
+        border-left: 1px solid grey;
 
         transform: rotate(180deg);
 
@@ -78,8 +74,9 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
         flex-grow: 1;
+        padding-left: 2vw;
 
         .line-advantage__img {
             height: 40vh;
@@ -95,7 +92,7 @@ export default {
             padding-top: 4vh;
 
             font-size: calc(14px + 0.2vw);
-            line-height: 1em;
+            line-height: 1.5em;
         }
     }
 }

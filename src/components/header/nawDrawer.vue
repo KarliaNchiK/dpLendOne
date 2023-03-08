@@ -59,12 +59,21 @@ export default {
             .content-link__text {
                 font-size: calc(14px + 4vmin);
                 line-height: 1.4em;
+                color: #fff;
             }
         }
     }
 
     .naw-draw__contact {
         padding: 5vh 0;
+
+        .phone-number__text {
+            color: #fff;
+        }
+
+        .phone-number__icon {
+            filter: invert(1);
+        }
     }
 }
 </style>

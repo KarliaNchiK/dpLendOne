@@ -51,14 +51,15 @@ export default {
             line-height: 1.4em;
 
             transition: all 0.25s ease-in-out;
+            will-change: transform;
 
             &:not(:first-child) {
                 margin-top: 2vh;
             }
 
             &:hover {
-                font-size: 16px;
-                font-weight: 600;
+                transform: scale(1.2);
+                transform-origin: center left;
             }
         }
     }

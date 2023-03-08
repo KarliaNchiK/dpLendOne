@@ -9,6 +9,7 @@
                 :key="advantage.title + '_' + i"
                 :index="i"
                 v-bind="advantage"
+                :data-aos="i % 2 ? 'slide-left' : 'slide-right'"
             />
         </div>
     </div>
@@ -46,9 +47,22 @@ export default {
     justify-content: space-between;
 
     flex-wrap: wrap;
+}
 
+@media (min-width: map-get($sizes, 'lg')) {
     .line-advantage {
         width: 45%;
+    }
+}
+
+@media (max-width: map-get($sizes, 'lg')) {
+    .our-advantages__advantages-container {
+        padding: 0 2vmin;
+        box-sizing: border-box;
+
+        .line-advantage {
+            width: 100%;
+        }
     }
 }
 </style>

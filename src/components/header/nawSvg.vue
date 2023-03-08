@@ -29,7 +29,7 @@ export default {
 svg > line {
     transition: transform 0.5s, opacity 0.3s 0.1s ease;
 
-    stroke: black;
+    stroke: white;
     stroke-width: 6;
 
     &:nth-child(1) {
