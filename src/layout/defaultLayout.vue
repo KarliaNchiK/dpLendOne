@@ -93,8 +93,8 @@ export default {
                 href: 'tel:88432456282'
             },
             {
-                title: 'dp.site@yandex.ru',
-                href: 'mailto:dp.site@yandex.ru'
+                title: 'yousolutions@yandex.ru',
+                href: 'mailto:yousolutions@yandex.ru'
             },
             {
                 title: 'РТ, 420021, г. Казань<br/>Ул. Татарстан, д. 22/41<br/>Офис 367',
