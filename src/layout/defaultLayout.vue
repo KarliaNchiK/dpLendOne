@@ -172,6 +172,16 @@ export default {
         transition: padding 0.25s;
     }
 
+    .app-page__header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 300;
+
+        background: map-get($colors, 'background-base');
+        box-shadow: 2px 0 6px rgba(0,0,0,.25);
+    }
+
     .app-page__footer {
         width: 100%;
         padding: 2vh 0 5vh;

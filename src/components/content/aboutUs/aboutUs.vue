@@ -51,7 +51,7 @@ export default {
         max-width: 90%;
       }
         position: sticky;
-        top: 0;
+        top: 15vh;
         left: 0;
 
         display: flex;

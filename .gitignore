@@ -3,6 +3,7 @@ node_modules
 /dp
 /youSolutions
 /despers
+/armos
 
 # local env files
 .env.local
