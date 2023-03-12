@@ -19,7 +19,7 @@
                 <img
                     src="@imgs/logo.svg"
                     alt="Логотип"
-                    width="390"
+                    width="700"
                     height="50"
                     style="max-width: 100%; object-fit: contain"
                 >
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="page-footer__end">
-                    <span>© {{ new Date().getFullYear() }} ПерсЭксп</span>
+                    <span>© {{ new Date().getFullYear() }} Персонал Экспресс</span>
                     <span>Режим работы - с 8:00 до 20:00. Без выходных</span>
                 </div>
             </div>
@@ -81,8 +81,8 @@ export default {
     },
 
     data: () => ({
-        phoneNumbers: ['8 843 245 68 82'],
-        contentLinks: ["Визитка", "Достижения", "Персонал", "Выгода", "О нас"],
+        phoneNumbers: ['8 (843) 245 68 82'],
+        contentLinks: ["Визитка", "Достижения", "Цены и услуги", "Выгода", "О нас"],
         socialLinks: [
             {
                 title: 'Телеграм',
@@ -95,7 +95,7 @@ export default {
         ],
         contactLinks: [
             {
-                title: '8 843 245 68 82',
+                title: '8 (843) 245 68 82',
                 href: 'tel:884324568582'
             },
             {

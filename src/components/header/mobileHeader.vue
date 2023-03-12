@@ -20,8 +20,8 @@
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
-            width="195"
-            height="25"
+            width="300"
+            height="30"
             style="z-index: 999; position: relative;"
         >
     </header>

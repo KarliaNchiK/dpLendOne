@@ -3,16 +3,23 @@
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
-            width="300"
+            width="600"
             height="40"
         >
         <div class="page-header__connect">
+            <phone-number
+                v-for="phoneNumber in phoneNumbers"
+                :key="phoneNumber"
+                :text="phoneNumber"
+            />
         </div>
     </header>
 </template>
 
 
 <script>
+import phoneNumber from '@/components/header/phoneNumber';
+
 export default {
     props: {
         contentLinks: Array,
@@ -20,6 +27,7 @@ export default {
         goToBlock: Function,
     },
     components: {
+        phoneNumber,
     },
 }
 </script>
@@ -44,5 +52,9 @@ export default {
     box-shadow: 4px 0 8px grey;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
+
+    .page-header__connect .phone-number {
+        filter: invert(1);
+    }
 }
 </style>

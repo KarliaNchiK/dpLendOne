@@ -1,5 +1,5 @@
 const {defineConfig} = require('@vue/cli-service');
-const nameProject = "armos";
+const nameProject = "PersEksp";
 
 module.exports = defineConfig({
     transpileDependencies: true,
