@@ -1,6 +1,7 @@
 <template>
     <transition name="fade">
         <div
+            ref="dialog"
             v-if="active"
             class="dialog-form"
             role="dialog"
@@ -86,6 +87,7 @@ export default {
                 city: false,
             },
             sendSuccess: false,
+            showOverlay: false,
         }
     },
     watch: {
@@ -133,7 +135,7 @@ export default {
             event.preventDefault();
 
             if (this.isDataValid) {
-                fetch('https://staff-service24.ru/js/go.php', {
+                fetch('http://yousolutions.ru/go.php', {
                     method: "POST",
                     headers: {
                         'Access-Control-Allow-Origin': '*',
@@ -177,6 +179,12 @@ export default {
     width: 100%;
     height: 100%;
 
+    &.fade-enter-to {
+        .dialog-form__overlay {
+            backdrop-filter: blur(0);
+        }
+    }
+
     .dialog-form__overlay {
         position: absolute;
         z-index: 9991;
@@ -184,7 +192,10 @@ export default {
         width: 100%;
         height: 100%;
 
-        background: rgba(0,0,0,.4);
+        transition: all 0.35s ease-in-out;
+
+        background: rgba(180,180,180,.1);
+        backdrop-filter: blur(4px);
     }
 
     .dialog-form__content {
@@ -199,13 +210,9 @@ export default {
         min-height: 300px;
         padding: 5vh 5vw;
 
-        background: linear-gradient(
-                -45deg,
-                map-get($colors, 'info'),
-                map-get($colors, 'light-shadow') 20%,
-                map-get($colors, 'light-shadow') 80%,
-                map-get($colors, 'primary-base')
-        );
+        background-image: url("@imgs/dialogBackground.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
         border-radius: 24px;
 
         .dialog-form__title-right {
@@ -269,9 +276,10 @@ export default {
 @media (min-width: #{map-get($sizes, 'md')}) {
     .dialog-form__content {
         width: 50%;
+        background-position: center left;
 
         .dialog-form__inputs {
-            width: 60%;
+            width: 50%;
         }
     }
 }
@@ -279,6 +287,7 @@ export default {
 @media (max-width: #{map-get($sizes, 'md')}) {
     .dialog-form__content {
         width: 90%;
+        background-position: center right;
 
         .dialog-form__inputs {
             width: 100%;

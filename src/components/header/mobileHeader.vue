@@ -59,14 +59,20 @@ export default {
 
 <style lang="scss">
 .page-header {
+    position: sticky;
+    top: 0;
+    z-index: 1111;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
-    height: 12vh;
-    min-height: 80px;
+    height: 5vh;
+    min-height: 60px;
     padding: 0 4vw;
+
+    background: rgba(0,0,0,.9);
 
     .page-header__activator-container {
         position: relative;
@@ -87,7 +93,7 @@ export default {
         width: 100vw;
         height: 100%;
 
-        background: white;
+        background: black;
         overflow: hidden;
     }
 }

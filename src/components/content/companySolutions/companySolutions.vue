@@ -1,15 +1,20 @@
 <template>
     <div class="company-solutions">
-        <div class="company-solutions__info solutions-info">
+        <div
+            class="company-solutions__info solutions-info"
+            data-aos="fade-up"
+        >
             <p class="solutions-info__value-proposition">
-                Доверьте нам всю рутину <br /> по поиску и управлению персоналом
+                Экономьте своё время, предоставив дело профессионалам <br/><br/>
+                Ваше лучшее решение
             </p>
             <p class="solutions-info__title">
                 Аутсорсинг <br/> персонала
             </p>
             <p class="solutions-info__info">
-                Быстро подберём для вас персонал по <span>оптимальным ценам</span>.
-                Можем предложить <span>грузчиков</span>,  <span>разнорабочих</span>, <span>слесарей</span>, <span>фасовщиков</span> и <span>другой персонал</span>.
+                Мы решим любую вашу <span> потребность в персонале</span>. Больше не нужно заботиться о том, будет ли выполнена работа в срок <span>Будет</span>.
+                Большой штат, профессиональная команда, <span>оптимальные цены</span>.
+                Подберём для вас <span>грузчиков</span>,  <span>разнорабочих</span>, <span>слесарей</span>, <span>фасовщиков</span> и <span>другой персонал</span>.
                 Выслушаем ваши требования и совместно придём к <span>наилучшему решению</span>.
             </p>
 
@@ -19,26 +24,16 @@
                     class="solutions-info__bid"
                     @click="openDialog"
                 >
-                    Мне нужен персонал
+                    Оставить заявку
                 </button>
                 <button
                     type="button"
                     class="solutions-info__call"
                     @click="goToBottom"
                 >
-                    Я хочу связаться
+                    Контактные данные
                 </button>
             </div>
-        </div>
-        <div
-            v-if="!isMobile"
-            class="company-solutions__background"
-        >
-            <img
-                src="@imgs/work.gif"
-                alt="Фон"
-                class="company-solutions__background-gif"
-            >
         </div>
     </div>
 </template>
@@ -67,12 +62,17 @@ export default {
 
 .company-solutions {
     position: relative;
-
-    margin-top: 10vh;
+    box-sizing: border-box;
 
     .solutions-info {
         position: relative;
         z-index: 3;
+
+        box-sizing: border-box;
+
+        background-image: url("@imgs/time.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
 
         .solutions-info__value-proposition {
             font-size: calc(12px + 0.5vh + 0.4vw);
@@ -82,21 +82,20 @@ export default {
         .solutions-info__title {
             margin-top: 3vh;
 
-            font-size: calc(16px + 5vmax);
-            line-height: 1em;
+            font-size: calc(12px + 6vmin);
+            line-height: 1.4em;
         }
 
         .solutions-info__info {
             margin-top: 3vh;
-            padding-right: 20%;
 
-            font-size: calc(16px + 0.1vw);
-            line-height: 1.4em;
+            font-size: calc(16px + 0.2vmax);
+            line-height: 1.5em;
 
             span {
                 font-size: inherit;
                 line-height: inherit;
-                color: map-get($colors, 'primary-base');
+                color: white;
                 text-shadow: 1px 1px 1px rgba(0,0,0,.1);
             }
         }
@@ -106,16 +105,17 @@ export default {
 
             .solutions-info__call,
             .solutions-info__bid {
-                font-size: calc(16px + 0.2vw);
+                font-size: calc(12px + 0.8vmin);
                 font-weight: 500;
+                color: map-get($colors, 'primary-base');
 
                 border-radius: 5rem;
+                border-width: 4px;
                 border-color: map-get($colors, 'primary-base');
                 border-style: solid;
                 cursor: pointer;
 
-                box-shadow: 6px 6px 6px rgba(0,0,0,.3),
-                -2px -2px 2px map-get($colors, 'light-shadow');
+                box-shadow: 0 0 12px rgba(0,0,0,.3);
 
                 transition: all 0.3s ease-in-out;
                 will-change: transform;
@@ -123,53 +123,29 @@ export default {
                 &:hover {
                     transform: scale(1.02);
 
-                    box-shadow: 6px 6px 12px rgba(0,0,0,.3),
-                    -4px -4px 4px map-get($colors, 'light-shadow');
+                    box-shadow: 0 0 18px rgba(0,0,0,.5);
                 }
 
                 &:active {
                     transform: scale(0.95);
                 }
             }
-
-            .solutions-info__bid {
-                color: map-get($colors, 'primary-base');
-            }
-
-            .solutions-info__call, {
-                color: map-get($colors, 'background-base');
-                background: map-get($colors, 'primary-base');
-                border: none;
-            }
-        }
-    }
-
-    .company-solutions__background {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 2;
-
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        width: 100%;
-        height: 100%;
-
-        mix-blend-mode: multiply;
-
-        .company-solutions__background-gif {
-            border-radius: 18px;
-            object-fit: contain;
-
-            max-height: 100%;
-            max-width: 60%;
         }
     }
 
     @media (min-width: map-get($sizes, 'md')) {
+        padding-top: 10vh;
+        margin: 0 0 20vh;
+
+        background-position: top right;
+
         .solutions-info {
-            width: 60%;
+            padding: 4vmin 8vmin 8vmin 8vmin;
+            border-radius: 16px;
+
+            .solutions-info__info {
+                width: 60%;
+            }
 
             .solutions-info__call,
             .solutions-info__bid {
@@ -183,8 +159,11 @@ export default {
     }
 
     @media (max-width: map-get($sizes, 'md')) {
+        padding-top: 5vh;
+
         .solutions-info {
             width: 100%;
+            padding: 4vmin;
 
             .solutions-info__actions {
                 display: flex;
@@ -193,8 +172,8 @@ export default {
 
             .solutions-info__call,
             .solutions-info__bid {
-                width: 45%;
-                padding: 2vh 2vw;
+                width: 49%;
+                padding: 2vmin;
             }
         }
     }

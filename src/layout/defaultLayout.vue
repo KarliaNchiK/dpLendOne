@@ -1,9 +1,12 @@
 <template>
     <div>
         <dialog-form />
+        <layout-widgets v-if="!isMobile" />
+        <layout-menu v-if="!isMobile" :goToBlock="goToBlock" :contentLinks="contentLinks" />
         <component
             :is="appHeader"
             class="app-page__header"
+            :class="{'page-header--active': scrollTop !== 0}"
             :contentLinks="contentLinks"
             :phoneNumbers="phoneNumbers"
             :goToBlock="goToBlock"
@@ -14,7 +17,7 @@
         <footer class="app-page__footer">
             <div class="page-footer">
                 <img
-                    src="@imgs/logo-white.svg"
+                    src="@imgs/logo.svg"
                     alt="Логотип"
                     width="390"
                     height="50"
@@ -23,16 +26,16 @@
                 <div class="page-footer__first-block">
                     <div class="page-footer__links-container">
                         <links-column
-                            title="Изучить"
+                            title="Перейти"
                             :quick-links="contentLinks.map(title => ({title, haveListener: true}))"
                             @click="(i) => goToBlock(i)"
                         />
                         <links-column
-                            title="Связаться"
+                            title="Социальные сети"
                             :quick-links="socialLinks"
                         />
                         <links-column
-                            title="Контакты"
+                            title="Наши контакты"
                             :quick-links="contactLinks"
                         />
                     </div>
@@ -52,21 +55,8 @@
                         >
                     </div>
                 </div>
-                <div class="page-footer__title">
-                    <div class="page-footer__title-text">
-                        Повышение стабильности и прибыли всего в 1 клике.
-                    </div>
-                    <div class="page-footer__title-button">
-                        <dp-button
-                            class="page-footer__button"
-                            @click="openDialog"
-                        >
-                            Оформить заявку
-                        </dp-button>
-                    </div>
-                </div>
                 <div class="page-footer__end">
-                    <span>© {{ new Date().getFullYear() }} ООО "Деловой подход+"</span>
+                    <span>© {{ new Date().getFullYear() }} ПерсЭксп</span>
                     <span>Режим работы - с 8:00 до 20:00. Без выходных</span>
                 </div>
             </div>
@@ -77,40 +67,44 @@
 <script>
 import LinksColumn from "@/components/footer/linksColumn";
 import DialogForm from "@/components/ui/dialogForm";
+import LayoutWidgets from "@/layout/layoutWidgets";
+import LayoutMenu from "@/layout/layoutMenu";
 
 export default {
     name: 'App',
 
     components: {
+        LayoutMenu,
+        LayoutWidgets,
         DialogForm,
         LinksColumn,
     },
 
     data: () => ({
-        phoneNumbers: ['8 843 245 68 18', '8 904 666 66 46'],
-        contentLinks: ["Решения", "Предложения", "Достижения", "Цены", "Калькулятор", "О нас"],
+        phoneNumbers: ['8 843 245 68 82'],
+        contentLinks: ["Визитка", "Достижения", "Персонал", "Выгода", "О нас"],
         socialLinks: [
             {
                 title: 'Телеграм',
-                href: 'https://t.me/Delovoi_podhod_bot'
+                href: 'https://t.me/+79991575127'
             },
             {
                 title: 'Whatsapp',
-                href: 'https://wa.me/79067242517'
+                href: 'https://wa.me/79991575127'
             },
         ],
         contactLinks: [
             {
-                title: '8 800 222 12 59',
-                href: 'tel:88002221259'
+                title: '8 843 245 68 82',
+                href: 'tel:884324568582'
             },
             {
-                title: 'delovoi_podhod@inbox.ru',
-                href: 'mailto:delovoi_podhod@inbox.ru'
+                title: 'persexp@yandex.ru',
+                href: 'mailto:persexp@yandex.ru'
             },
             {
-                title: 'РТ, 420021, г. Казань<br/>Ул. Татарстан, д. 22<br/>Офис 367',
-                href: 'https://go.2gis.com/fmg9g0',
+                title: 'РТ, 420021, г. Казань<br/>Ул. Учительская, д. 2А',
+                href: 'https://go.2gis.com/0dwld',
             }
         ],
         activeHeader: "",
@@ -125,6 +119,11 @@ export default {
         window.addEventListener('resize', this.onResize);
         this.setActiveHeader();
     },
+    mounted() {
+        if (!this.isMobile) {
+            window.addEventListener('scroll', this.onScroll);
+        }
+    },
     computed: {
         appHeader() {
             const typeHeader = this.activeHeader;
@@ -136,6 +135,9 @@ export default {
         },
         windowResize() {
             return this.$store.getters.windowWidth;
+        },
+        scrollTop() {
+            return this.$store.getters.scrollTop;
         },
     },
     methods: {
@@ -152,6 +154,9 @@ export default {
         },
         onResize() {
             this.$store.commit("setWindowWidth", window.innerWidth);
+        },
+        onScroll() {
+            this.$store.commit("setScrollTop", document.documentElement.scrollTop);
         },
         goToBlock(index) {
             document.querySelector(`[name='start-block-${ index }']`).scrollIntoView(true);
@@ -171,10 +176,13 @@ export default {
 @use '@/assets/css/sizes.scss' as *;
 
 .app-page {
-    .page-header,
     .page-content,
     .page-footer {
         transition: padding 0.25s;
+    }
+
+    .app-page__header {
+        transition: all 0.25s ease-in-out;
     }
 
     .app-page__footer {
@@ -182,7 +190,7 @@ export default {
         padding: 2vh 0 5vh;
         box-sizing: border-box;
 
-        background: #21201e;
+        background: #2f3030;
     }
 
     .page-footer {
@@ -197,6 +205,7 @@ export default {
             display: flex;
             justify-content: space-between;
             margin-top: 6vh;
+            width: 100%;
 
             .page-footer__back-to-top {
                 display: flex;
@@ -217,32 +226,6 @@ export default {
             box-sizing: border-box;
         }
 
-        .page-footer__title {
-            display: flex;
-            width: 100%;
-            margin-top: 6vh;
-            padding-bottom: 5vh;
-
-            border-bottom: 1px solid rgba(255,255,255,.65);
-
-            .page-footer__title-text {
-                font-size: calc(16px + 2vmin);
-                line-height: 1.2em;
-            }
-
-            .page-footer__title-button {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                flex-shrink: 0;
-
-                button {
-                    border-radius: 34px;
-                    padding: 24px 32px;
-                }
-            }
-        }
-
         .page-footer__end {
             display: flex;
             justify-content: space-between;
@@ -251,58 +234,21 @@ export default {
         }
     }
 
-    @media (min-width: #{map-get($sizes, 'lg')}) {
-        $paddingPage: 0 15vw;
-
+    @media (min-width: #{map-get($sizes, 'md')}) {
         .page-content,
         .page-footer {
-            padding: $paddingPage;
-        }
-    }
-
-    @media (max-width: #{map-get($sizes, 'lg')}) {
-        $paddingPage: 0 2vw;
-
-        .page-content,
-        .page-footer {
-            padding: $paddingPage;
-        }
-    }
-
-    @media (min-width: map-get($sizes, 'md')) {
-        .page-footer__first-block {
-            width: 100%;
-        }
-
-        .page-footer__title-text {
-            width: 80%;
-            padding-left: 5%;
-            box-sizing: border-box;
-        }
-
-        .page-footer__title-button {
-            box-sizing: border-box;
-            padding-right: 5%;
+            padding: 0 15vw;
         }
     }
 
     @media (max-width: map-get($sizes, 'md')) {
+        .page-footer {
+            box-sizing: border-box;
+            padding: 0 2vw;
+        }
+
         .page-footer__links-container {
-            width: 100%;
             justify-content: space-between;
-        }
-
-        .page-footer__title {
-            flex-direction: column;
-        }
-
-        .page-footer__title-button {
-            width: 100%;
-            margin-top: 5vh;
-
-            .page-footer__button {
-                width: 100%;
-            }
         }
     }
 }

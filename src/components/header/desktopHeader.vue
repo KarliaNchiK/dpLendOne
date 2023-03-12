@@ -3,32 +3,16 @@
         <img
             src="@imgs/logo.svg"
             alt="Логотип"
-            width="195"
-            height="25"
+            width="300"
+            height="40"
         >
-        <div class="page-header__toolbar">
-            <content-link
-                v-for="(contentLink, i) in contentLinks"
-                :key="contentLink"
-                :text="contentLink"
-                @click.native="goToBlock(i)"
-            />
-        </div>
         <div class="page-header__connect">
-            <phone-number
-                v-for="phoneNumber in phoneNumbers"
-                :key="phoneNumber"
-                :text="phoneNumber"
-            />
         </div>
     </header>
 </template>
 
 
 <script>
-import phoneNumber from '@/components/header/phoneNumber';
-import contentLink from "@/components/header/contentLink";
-
 export default {
     props: {
         contentLinks: Array,
@@ -36,30 +20,29 @@ export default {
         goToBlock: Function,
     },
     components: {
-        phoneNumber,
-        contentLink,
     },
 }
 </script>
 
 <style lang="scss">
+@use "@/assets/css/colors.scss" as *;
+
 .page-header {
+    position: sticky;
+    top: 0;
+    z-index: 1111;
+
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
-    height: 12vh;
-    min-height: 80px;
-    padding: 0 4vw;
+    height: 5vh;
+    min-height: 60px;
+    padding: 0 15vw;
 
-    .page-header__toolbar {
-        display: flex;
-        width: 100%;
-        padding: 0 4vw;
-    }
-
-    .page-header__connect {
-        flex-shrink: 0;
-    }
+    box-shadow: 4px 0 8px grey;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
 }
 </style>

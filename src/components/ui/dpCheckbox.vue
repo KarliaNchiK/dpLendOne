@@ -1,5 +1,8 @@
 <template>
-    <label class="dp-checkbox">
+    <label
+        class="dp-checkbox"
+        :data-tippy-content="tippyContent"
+    >
         <input
             class="dp-checkbox__checkbox"
             type="checkbox"
@@ -29,6 +32,22 @@ export default {
             type: Boolean,
             default: false,
         },
+        tippyContent: {
+            type: String,
+            default: "",
+        }
+    },
+    computed: {
+      isMobile() {
+          return this.$store.getters.isMobile;
+      }
+    },
+    mounted() {
+        if (!this.isMobile) {
+            window.tippy(this.$el, {
+                arrow: false,
+            });
+        }
     },
     methods: {
         onChange() {
@@ -67,6 +86,7 @@ export default {
             margin-right: 8px;
             width: 16px;
             height: 16px;
+            background: white;
             border: 1px solid map-get($colors, 'primary-base');
             border-radius: 4px;
         }
