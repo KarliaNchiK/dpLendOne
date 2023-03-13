@@ -159,7 +159,13 @@ export default {
             this.$store.commit("setScrollTop", document.documentElement.scrollTop);
         },
         goToBlock(index) {
-            document.querySelector(`[name='start-block-${ index }']`).scrollIntoView(true);
+            const el = document.querySelector(`[name='start-block-${ index }']`);
+
+            if (el.dataset.top) {
+                el.scrollIntoView({ block: "start", behavior: "smooth" });
+            } else {
+                el.scrollIntoView({ block: "center", behavior: "smooth" });
+            }
         },
         goToTop() {
             document.documentElement.scrollTo(0, 0);

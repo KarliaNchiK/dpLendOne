@@ -1,8 +1,8 @@
 <template>
     <div class="lending-content">
         <company-solutions name="start-block-0" data-index="0" />
-        <our-advantages name="start-block-1" data-index="1" />
-        <company-services name="start-block-2" data-index="2" />
+        <our-advantages name="start-block-1" data-index="1" data-top="1" />
+        <company-services data-index="2" />
         <benefit-calculator name="start-block-3" data-index="3" />
         <about-us name="start-block-4" data-index="4" />
     </div>

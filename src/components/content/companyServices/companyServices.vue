@@ -17,6 +17,7 @@
         </div>
         <div
             class="company-services__content"
+            name="start-block-2"
             data-aos="fade-up"
         >
             <div class="company-services__staffs-container">
@@ -72,8 +73,6 @@ export default {
     .company-services__title-container {
         position: relative;
 
-        padding-bottom: 15vh;
-
         .company-services__title {
             font-size: calc(16px + 0.4vw);
             line-height: 1.2em;
@@ -97,6 +96,7 @@ export default {
     .company-services__content {
         display: flex;
         justify-content: space-between;
+        padding-top: 15vh;
     }
 
     .company-services__staffs-container {
